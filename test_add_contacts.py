@@ -2,7 +2,7 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import unittest
-from contact import Contacts
+from contact import Contact
 
 
 class UntitledTestCase(unittest.TestCase):
@@ -15,7 +15,7 @@ class UntitledTestCase(unittest.TestCase):
         self.open_page(wd)
         self.login(wd, username="admin", password="secret")
         self.open_contact_form(wd)
-        self.filling_in_the_fields(wd, Contacts(firstname="levan", middlename="levanovich", lastname ="ovakimidis", nickname="levanich",
+        self.filling_in_the_fields(wd, Contact(firstname="levan", middlename="levanovich", lastname ="ovakimidis", nickname="levanich",
                                                 company="levancompany", address="Moscow ave.", home_num="9884737",
                                                 mob_num="+3993774", work_num="44444", email1="levan@gms.tech", bday="18",
                                                 bmanth="December", byear="1998", amonth="November",
