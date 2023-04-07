@@ -2,7 +2,7 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import unittest
-from contacts import Contacts
+from contact import Contacts
 
 
 class UntitledTestCase(unittest.TestCase):
