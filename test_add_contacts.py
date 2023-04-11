@@ -10,7 +10,7 @@ class ContacttestCase(unittest.TestCase):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
 
-    def Filling_contact_fields_test_case(self):
+    def filling_contact_fields_test_case(self):
         wd = self.wd
         self.open_page(wd)
         self.login(wd, username="admin", password="secret")
