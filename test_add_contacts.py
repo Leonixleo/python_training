@@ -5,12 +5,12 @@ import unittest
 from contact import Contact
 
 
-class UntitledTestCase(unittest.TestCase):
+class ContacttestCase(unittest.TestCase):
     def setUp(self):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
 
-    def test_untitled_test_case(self):
+    def Filling_contact_fields_test_case(self):
         wd = self.wd
         self.open_page(wd)
         self.login(wd, username="admin", password="secret")
@@ -20,14 +20,14 @@ class UntitledTestCase(unittest.TestCase):
                                                 mob_num="+3993774", work_num="44444", email1="levan@gms.tech", bday="18",
                                                 bmanth="December", byear="1998", amonth="November",
                                                 aday="17", ayear="2000"))
-        self.Return_home_page(wd)
+        self.return_home_page(wd)
         self.logout(wd)
 
     def logout(self, wd):
         # Logout
         wd.find_element_by_link_text("Logout").click()
 
-    def Return_home_page(self, wd):
+    def return_home_page(self, wd):
         # Return home page
         wd.find_element_by_link_text("home page").click()
 
@@ -69,7 +69,6 @@ class UntitledTestCase(unittest.TestCase):
         wd.find_element_by_xpath("//option[@value='18']").click()
         wd.find_element_by_name("bmonth").click()
         Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contacts.bmanth)
-        wd.find_element_by_xpath("//option[@value='December']").click()
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys(contacts.byear)
