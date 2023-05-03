@@ -12,7 +12,7 @@ def app(request):
 
 
 def test_filling_contact_fields(app):
-        app.login(username="admin", password="secret")
+        app.session.login(username="admin", password="secret")
         app.open_contact_form()
         app.filling_in_the_fields(Contact(firstname="levan", middlename="levanovich", lastname="ovakimidis",
                                                nickname="levanich",
@@ -21,4 +21,4 @@ def test_filling_contact_fields(app):
                                                bmanth="December", byear="1998", amonth="November",
                                                aday="17", ayear="2000"))
         app.return_home_page()
-        app.logout()
+        app.session.logout()
