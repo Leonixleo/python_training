@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 import pytest
 from contact import Contact
-from application_for_contacts import Application_for_contact
+from application import Application
 
 
-@pytest.fixture
+@pytest.fixture()
 def app(request):
-    fixture = Application_for_contact
+    fixture = Application()
     request.addfinalizer(fixture.destroy)
     return fixture
-
 
 
 def filling_contact_fields_test_case(app):
