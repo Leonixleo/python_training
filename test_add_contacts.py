@@ -11,7 +11,7 @@ def app(request):
     return fixture
 
 
-def filling_contact_fields(app):
+def test_filling_contact_fields(app):
         app.login(username="admin", password="secret")
         app.open_contact_form()
         app.filling_in_the_fields(Contact(firstname="levan", middlename="levanovich", lastname="ovakimidis",
