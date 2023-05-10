@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
 
@@ -61,6 +62,16 @@ class ContacsHelper:
             wd.find_element_by_name("ayear").clear()
             wd.find_element_by_name("ayear").send_keys(contacts.ayear)
             wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+
+    def delete_first_contact(self):
+        wd = self.app.wd
+        # Select first contact
+        wd.find_element_by_name("selected[]").click()
+        # Submit first contact
+        wd.find_element(By.XPATH,"//*[@onclick='DeleteSel()']").click()
+        wd.switch_to.alert.accept()
+        # Return home page
+        wd.find_element_by_link_text("home page").click()
 
     def open_form(self):
         wd = self.app.wd
