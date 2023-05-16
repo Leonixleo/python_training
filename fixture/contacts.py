@@ -70,8 +70,7 @@ class ContacsHelper:
         # Submit first contact
         wd.find_element(By.XPATH,"//*[@onclick='DeleteSel()']").click()
         wd.switch_to.alert.accept()
-        # Return home page
-        wd.find_element_by_link_text("home page").click()
+
 
     def open_form(self):
         wd = self.app.wd
