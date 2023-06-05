@@ -3,7 +3,6 @@ from model.contact import Contact
 
 
 def test_filling_contact_fields(app):
-        app.session.login(username="admin", password="secret")
         app.contact.open_form()
         app.contact.filling_in_the_fields(Contact(firstname="levan", middlename="levanovich", lastname="ovakimidis",
                                                nickname="levanich",
@@ -13,4 +12,4 @@ def test_filling_contact_fields(app):
                                                aday="17", ayear="2000"))
 
         app.contact.return_home_page()
-        app.session.logout()
+
