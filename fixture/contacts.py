@@ -71,6 +71,23 @@ class ContacsHelper:
         wd.find_element(By.XPATH,"//*[@onclick='DeleteSel()']").click()
         wd.switch_to.alert.accept()
 
+    def edit_contacts(self):
+        wd = self.app.wd
+        # edit contact
+        wd.find_element(By.XPATH, "//*[@alt='Edit']").click()
+        wd.find_element_by_name("firstname").click()
+        wd.find_element_by_name("firstname").clear()
+        wd.find_element_by_name("firstname").send_keys("Levani")
+        wd.find_element_by_name("middlename").click()
+        wd.find_element_by_name("middlename").clear()
+        wd.find_element_by_name("middlename").send_keys("Levanisje")
+        wd.find_element_by_name("lastname").click()
+        wd.find_element_by_name("lastname").clear()
+        wd.find_element_by_name("lastname").send_keys("Meladze")
+        wd.find_element_by_name("nickname").click()
+        wd.find_element_by_name("nickname").clear()
+        wd.find_element_by_name("nickname").send_keys("levandovsky")
+        wd.find_element_by_name("update").click()
 
     def open_form(self):
         wd = self.app.wd
