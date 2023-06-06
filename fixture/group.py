@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 class GroupHelper:
 
     def __init__(self,app):
@@ -78,3 +77,9 @@ class GroupHelper:
         wd = self.app.wd
         # open groups page
         wd.find_element_by_link_text("groups").click()
+
+    def count(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        return len(wd.find_elements_by_name("selected[]"))
+
