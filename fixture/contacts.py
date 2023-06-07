@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
 
+
 class ContacsHelper:
 
     def __init__(self,app):
@@ -65,28 +66,30 @@ class ContacsHelper:
 
     def delete_first_contact(self):
         wd = self.app.wd
+        self.app.open_home_page()
         # Select first contact
         wd.find_element_by_name("selected[]").click()
         # Submit first contact
-        wd.find_element(By.XPATH,"//*[@onclick='DeleteSel()']").click()
+        wd.find_element(By.XPATH, "//*[@onclick='DeleteSel()']").click()
         wd.switch_to.alert.accept()
 
-    def edit_contacts(self):
+    def edit_contacts(self, contacts):
         wd = self.app.wd
+        self.app.open_home_page()
         # edit contact
         wd.find_element(By.XPATH, "//*[@alt='Edit']").click()
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys("Levani")
+        wd.find_element_by_name("firstname").send_keys(contacts.firstname)
         wd.find_element_by_name("middlename").click()
         wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys("Levanisje")
+        wd.find_element_by_name("middlename").send_keys(contacts.middlename)
         wd.find_element_by_name("lastname").click()
         wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys("Meladze")
+        wd.find_element_by_name("lastname").send_keys(contacts.lastname)
         wd.find_element_by_name("nickname").click()
         wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys("levandovsky")
+        wd.find_element_by_name("nickname").send_keys(contacts.nickname)
         wd.find_element_by_name("update").click()
 
     def open_form(self):
@@ -97,14 +100,3 @@ class ContacsHelper:
     def count(self):
         wd = self.app.wd
         return len(wd.find_elements_by_xpath("/html/body/div/div[4]/form[2]/table/tbody/tr/td/a"))
-
-    """"  
-        def count(self):
-            wd = self.app.wd
-            count = len(wd.find_elements_by_xpath('//img[@alt="Edit"]'))
-            while count > 0:
-                wd.find_element_by_xpath('//img[@alt="Edit"]').click()
-                wd.find_element_by_xpath('//input[@value="Delete"]').click()
-                count -= 1
-                """
-
