@@ -97,6 +97,8 @@ class ContacsHelper:
         # Open contact forms and create
         wd.find_element_by_link_text("add new").click()
 
+
     def count(self):
         wd = self.app.wd
-        return len(wd.find_elements_by_xpath("/html/body/div/div[4]/form[2]/table/tbody/tr/td/a"))
+        self.app.open_home_page()
+        return len(wd.find_elements_by_xpath("//*[@name ='selected[]']"))
