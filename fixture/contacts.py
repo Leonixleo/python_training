@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
 
-
 class ContacsHelper:
 
     def __init__(self,app):
@@ -68,35 +67,28 @@ class ContacsHelper:
         wd = self.app.wd
         self.app.open_home_page()
         # Select first contact
-        wd.find_element_by_name("selected[]").click()
+        self.select_first_contact()
         # Submit first contact
         wd.find_element(By.XPATH, "//*[@onclick='DeleteSel()']").click()
         wd.switch_to.alert.accept()
 
+    def select_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_name("selected[]").click()
+
     def edit_contacts(self, contacts):
         wd = self.app.wd
         self.app.open_home_page()
+        self.select_first_contact()
+        wd.find_element_by_xpath('//img[@alt="Edit"]').click()
         # edit contact
-        wd.find_element(By.XPATH, "//*[@alt='Edit']").click()
-        wd.find_element_by_name("firstname").click()
-        wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(contacts.firstname)
-        wd.find_element_by_name("middlename").click()
-        wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys(contacts.middlename)
-        wd.find_element_by_name("lastname").click()
-        wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(contacts.lastname)
-        wd.find_element_by_name("nickname").click()
-        wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys(contacts.nickname)
+        self.filling_in_the_fields(contacts)
         wd.find_element_by_name("update").click()
 
     def open_form(self):
         wd = self.app.wd
         # Open contact forms and create
         wd.find_element_by_link_text("add new").click()
-
 
     def count(self):
         wd = self.app.wd
