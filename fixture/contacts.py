@@ -87,7 +87,8 @@ class ContacsHelper:
 
     def open_form(self):
         wd = self.app.wd
-        # Open contact forms and create
+        if not wd.current_url.endswith("/index.php"):
+            return
         wd.find_element_by_link_text("add new").click()
 
     def count(self):
